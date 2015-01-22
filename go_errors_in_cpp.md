@@ -1,4 +1,4 @@
-h1. Go like errors in C++
+# Go like errors in C++
 
 I'm starting this year off with working on a game that I have been thinking about all last year. I'm much more of a "tech" guy then a "game" guy so I plan on writting it all from scratch. I plan on using OpenGL as the render, which is the first thing I plan on writting. OpenGL is a C libary so its error handling is a bit interesting. Since I plan on writting all the API layer on top of OpenGL I wanted to have a common error handling system. Most C++ libaries that I have seen use exceptions for there errors. I hate exceptions. I hate the mechanism of blowing up the stack when an exception is thrown. I hate the code that you have to write to handle the expections. I hate that even small stuff can crash your application if you don't handle an exception. So for me exceptions are right out! I have enjoyed the concept of the [error type in go|http://blog.golang.org/error-handling-and-go] so I started to think about how I can use that concept in C++. 
 
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
 }
 ```
 
-h3. Interface
+### Interface
 This one is really easy to do:
 ```c++
 class error {
@@ -63,7 +63,7 @@ public:
 };
 ```
 
-h3. User errors
+### User errors
 Not all errors are built the same. Some errors aren't show stoppers, like EOF errors. Others are not much more that an indicature of failure and a message. Giving the user the ability to create their own errors give them the power to design the API how they want to.
 
 Because right now our `error` is an abstract class it is easy to implement a custom version.
